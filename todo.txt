@@ -1,0 +1,9 @@
+1、POM配置，顶层pom的配置如何影响module的配置 --ok
+2、module的编译级别默认是1.7，但顶层默认的是1.8？ why? ---PENDING
+3、分拆成多个module后，单元测试怎么搞？---ok
+4、引入spring机制 ---pending TODO
+5、数据库sql中的校验机制缺失，如何防止sql注入 ---APP&DB SERVICE DO IT
+6、mybatis的使用---maybe ok
+7、user、userexp 数据库模型要对外隔离---pending
+8、引入OSGI的包隔离--TODO
+9、view-app-db隔离--TODO
