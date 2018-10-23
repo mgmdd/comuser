@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 引用db.properties配置文件 -->
+	<properties resource="db.properties"/>
+
+	<typeAliases>
+		<typeAlias alias="User" type="com.user.service.dbservice.domain.User"/>
+		<typeAlias alias="UserExp" type="com.user.service.dbservice.domain.UserExp"/>
+		<typeAlias alias="MapperTest" type="com.user.service.dbservice.dao.MapperTest"/>
+	</typeAliases>
+
+	<!-- sqlite -->
+	<environments default="sqlite">
+		<environment id="sqlite">
+			<transactionManager type="JDBC">
+			</transactionManager>
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<!-- value属性值引用db.properties配置文件中配置的值 -->
+				<property name="driver" value="${jdbc.driverClassName}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/user/service/dbservice/orm/User-Map.xml"/>
+		<mapper resource="com/user/service/dbservice/orm/UserExp-Map.xml"/>
+		<mapper resource="com/user/service/dbservice/orm/MapperTest.xml"/>
+		<mapper resource="com/user/service/dbservice/orm/UserMapper.xml"/>
+		<mapper resource="com/user/service/dbservice/orm/UserExpMapper.xml"/>
+	</mappers>
+
+</configuration>

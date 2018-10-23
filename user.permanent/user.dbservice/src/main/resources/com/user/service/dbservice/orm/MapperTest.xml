@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.user.service.dbservice.dao.MapperTest">
+    <!--查询全部-->
+    <select id="queryAll" parameterType="String" resultType="com.user.service.dbservice.domain.User">
+        select * from user
+    </select>
+
+</mapper>
+
+        <!--CREATE TABLE user (-->
+        <!--userid   VARCHAR PRIMARY KEY ASC ON CONFLICT FAIL-->
+        <!--UNIQUE-->
+        <!--NOT NULL,-->
+        <!--username VARCHAR NOT NULL,-->
+        <!--phoneno  VARCHAR,-->
+        <!--regdate  DATE    NOT NULL,-->
+        <!--balance  DOUBLE  NOT NULL-->
+        <!--DEFAULT (0.0),-->
+        <!--comment  TEXT-->
+        <!--);-->
+
+
+
+
+
+
+
+
+
+

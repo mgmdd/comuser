@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.user.service.dbservice.mapper.UserMapper">
+    <!--查询全部-->
+    <select id="queryAll" parameterType="String" resultType="com.user.service.dbservice.domain.User">
+        select * from user
+    </select>
+    <!--根据条件模糊查询-->
+    <select id="queryByName" parameterType="String"
+            resultType="com.user.service.dbservice.domain.User">
+
+        <bind name="con" value="'%' + namecondition + '%'"></bind>
+
+        select * from user where username like #{con}
+    </select>
+
+    <select id="queryByID" parameterType="String" resultType="com.user.service.dbservice.domain.User">
+        select * from user where userid= #{userid}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(userid) from user
+    </select>
+
+    <delete id="deleteUser" parameterType="String">
+        delete from user where userid=#{userid};
+    </delete>
+
+    <insert id="createUser" parameterType="com.user.service.dbservice.domain.User">
+        INSERT INTO user (
+        userid,
+        username,
+        phoneno,
+        regdate,
+        balance,
+        comment
+        )
+        VALUES (
+        #{userID},
+        #{userName},
+        #{phoneNo},
+        #{regDate},
+        #{balance},
+        #{comment}
+        );
+    </insert>
+
+    <update id="updateBalance" parameterType="Map">
+        update user set balance=#{newbalance} where userid=#{userid}
+    </update>
+    <update id="updateComment" parameterType="com.user.service.dbservice.domain.User">
+        update user set comment='${comment}' where userid=#{userID}
+    </update>
+
+
+
+    <!--FOR TEST-->
+    <select id="tQueryByID" parameterType="String" resultType="Map">
+        select * from user where userid = #{userid}
+    </select>
+
+</mapper>
+
+        <!--CREATE TABLE user (-->
+        <!--userid   VARCHAR PRIMARY KEY ASC ON CONFLICT FAIL-->
+        <!--UNIQUE-->
+        <!--NOT NULL,-->
+        <!--username VARCHAR NOT NULL,-->
+        <!--phoneno  VARCHAR,-->
+        <!--regdate  DATE    NOT NULL,-->
+        <!--balance  DOUBLE  NOT NULL-->
+        <!--DEFAULT (0.0),-->
+        <!--comment  TEXT-->
+        <!--);-->
+
+
+
+
+
+
+
+
+
+
