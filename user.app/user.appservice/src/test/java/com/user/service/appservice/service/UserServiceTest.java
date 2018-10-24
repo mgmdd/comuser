@@ -1,7 +1,7 @@
 package com.user.service.appservice.service;
 
+import com.user.service.BeanService;
 import com.user.service.dbservice.domain.User;
-import com.user.service.dbservice.service.DefaultPLUserService;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,12 +14,14 @@ import java.util.UUID;
 
 public class UserServiceTest {
     private UserService userService;
+//    private ApplicationContext ctx = new ClassPathXmlApplicationContext("spring/spring_appservice.xml");
 
     @Before
-    public void setUp() throws Exception {
-        userService = new DefaultUserService();
-        //FOR TEST
-        ((DefaultUserService) userService).setPlUserService(new DefaultPLUserService());
+    public void setUp() {
+        userService = BeanService.getService(UserService.class);//(UserService)ctx.getBean("userservice");
+//        userService = new DefaultUserService();
+//        //FOR TEST
+//        ((DefaultUserService) userService).setPlUserService(new DefaultPLUserService());
         removeAll();
     }
 

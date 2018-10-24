@@ -1,11 +1,11 @@
 package com.user.view;
 
 import com.user.model.BalanceOperation;
-import com.user.service.dbservice.dao.UserDao;
-import com.user.service.dbservice.dao.UserExpDao;
+import com.user.service.BeanService;
+import com.user.service.appservice.service.UserExpService;
+import com.user.service.appservice.service.UserService;
 import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.domain.UserExp;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -134,12 +134,10 @@ public class CreateUserView extends JDialog {
         user.setRegDate(new Date(System.currentTimeMillis()));
         user.setComment(comment);
 
-        UserDao userDao = new UserDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
+        UserService userService = BeanService.getService(UserService.class);
 
         try {
-
-            userDao.createUser(user);
-
+            userService.createUser(user);
 
             //记录
             UserExp exp = new UserExp();
@@ -150,13 +148,12 @@ public class CreateUserView extends JDialog {
             exp.setUserID(user.getUserID());
             exp.setOperation(BalanceOperation.ADD);
 
-            UserExpDao userExpDao = new UserExpDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
+            UserExpService userExpService = BeanService.getService(UserExpService.class);
             try {
-
-                userExpDao.create(exp);
+                userExpService.create(exp);
             } catch (Exception ee) {
+                ee.printStackTrace();
             }
-
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "提示"

@@ -16,7 +16,7 @@ public class DefaultPLUserService implements PLUserService {
     private SqlSessionFactory sessionFactory;
 
     public DefaultPLUserService() {
-        this.sessionFactory = SqlSessionFactoryHolder.getSessionFactory();
+//        this.sessionFactory = SqlSessionFactoryHolder.getSessionFactory();
     }
 
     /**
@@ -144,6 +144,10 @@ public class DefaultPLUserService implements PLUserService {
 
             return userMapper.updateBalance(userid, newBalance);
         }
+    }
+
+    public void setSessionFactory(SqlSessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
 

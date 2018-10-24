@@ -1,6 +1,7 @@
 package com.user.service.appservice.service;
 
 import com.user.service.dbservice.domain.User;
+import com.user.service.dbservice.service.DefaultPLUserService;
 import com.user.service.dbservice.service.PLUserService;
 
 import java.util.List;
@@ -85,7 +86,7 @@ public class DefaultUserService implements UserService {
         return plUserService.updateBalance(userid, newBalance);
     }
 
-    void setPlUserService(PLUserService plUserService) {
+    public void setPlUserService(DefaultPLUserService plUserService) {
         this.plUserService = plUserService;
     }
 }

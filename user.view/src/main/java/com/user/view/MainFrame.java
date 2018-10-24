@@ -1,9 +1,8 @@
 package com.user.view;
 
-import com.user.service.dbservice.dao.UserDao;
+import com.user.service.BeanService;
+import com.user.service.appservice.service.UserService;
 import com.user.service.dbservice.domain.User;
-import com.user.service.dbservice.domain.UserCondition;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -111,8 +110,8 @@ public class MainFrame extends JFrame {
     }
 
     private List<User> getAllUsers() {
-        UserDao userDao = new UserDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
-        return userDao.queryAll();
+        UserService userService = BeanService.getService(UserService.class);
+        return userService.queryAll();
     }
 
     private void clearStatus() {
@@ -243,11 +242,9 @@ public class MainFrame extends JFrame {
         if (namecondition == null || namecondition.isEmpty()) {
             getData();
         } else {
-            UserCondition con = new UserCondition();
-            con.setNamecondition(namecondition);
 
-            UserDao userDao = new UserDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
-            List<User> users = userDao.queryByCondition(con);
+            UserService userService = BeanService.getService(UserService.class);
+            List<User> users = userService.queryByName(namecondition);
 
             clearTableData();
             //get data
@@ -364,8 +361,8 @@ public class MainFrame extends JFrame {
 
             User user = (User) tableView.getValueAt(selectedRow, 0);
 
-            UserDao userDao = new UserDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
-            userDao.deleteUser(user);
+            UserService userService = BeanService.getService(UserService.class);
+            userService.deleteUser(user.getUserID());
             getData();
         }
     }

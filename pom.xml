@@ -161,6 +161,7 @@
             <artifactId>spring-instrument</artifactId>
             <version>4.1.7.RELEASE</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -231,7 +232,6 @@
                 <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
             </properties>
-
         </profile>
     </profiles>
 </project>

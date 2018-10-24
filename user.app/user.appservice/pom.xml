@@ -36,7 +36,10 @@
             <groupId>com.user</groupId>
             <artifactId>user.dbservice</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.user</groupId>
+            <artifactId>user.common</artifactId>
+        </dependency>
 
 
     </dependencies>

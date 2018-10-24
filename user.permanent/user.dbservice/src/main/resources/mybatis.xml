@@ -8,7 +8,6 @@
 	<typeAliases>
 		<typeAlias alias="User" type="com.user.service.dbservice.domain.User"/>
 		<typeAlias alias="UserExp" type="com.user.service.dbservice.domain.UserExp"/>
-		<typeAlias alias="MapperTest" type="com.user.service.dbservice.dao.MapperTest"/>
 	</typeAliases>
 
 	<!-- sqlite -->
@@ -27,9 +26,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/user/service/dbservice/orm/User-Map.xml"/>
-		<mapper resource="com/user/service/dbservice/orm/UserExp-Map.xml"/>
-		<mapper resource="com/user/service/dbservice/orm/MapperTest.xml"/>
 		<mapper resource="com/user/service/dbservice/orm/UserMapper.xml"/>
 		<mapper resource="com/user/service/dbservice/orm/UserExpMapper.xml"/>
 	</mappers>

@@ -1,8 +1,8 @@
 package com.user.service.dbservice.service;
 
 import com.user.model.BalanceOperation;
+import com.user.service.BeanService;
 import com.user.service.dbservice.UserTestUtil;
-import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.domain.UserExp;
 import org.junit.After;
 import org.junit.Assert;
@@ -17,7 +17,7 @@ public class UserExpServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        service = new DefaultPLUserExpService();
+        service = BeanService.getService(PLUserExpService.class);//new DefaultPLUserExpService();
         removeall();
     }
 

@@ -36,6 +36,10 @@
             <groupId>com.user</groupId>
             <artifactId>user.appservice</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.user</groupId>-->
+            <!--<artifactId>user.dbservice</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

@@ -1,11 +1,11 @@
 package com.user.view;
 
 import com.user.model.BalanceOperation;
-import com.user.service.dbservice.dao.UserDao;
-import com.user.service.dbservice.dao.UserExpDao;
+import com.user.service.BeanService;
+import com.user.service.appservice.service.UserExpService;
+import com.user.service.appservice.service.UserService;
 import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.domain.UserExp;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,10 +73,9 @@ public class AddBalanceView extends JDialog {
                 double oldbalance = user.getBalance();
                 user.setBalance(oldbalance + value);
 
-                UserDao userDao = new UserDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
+                UserService userService = BeanService.getService(UserService.class);
                 try {
-                    userDao.updateBalance(user);
-
+                    userService.updateBalance(user.getUserID(), oldbalance + value);
 
                     //记录
                     UserExp exp = new UserExp();
@@ -87,10 +86,9 @@ public class AddBalanceView extends JDialog {
                     exp.setUserID(user.getUserID());
                     exp.setOperation(BalanceOperation.ADD);
 
-                    UserExpDao userExpDao = new UserExpDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
+                    UserExpService userExpService = BeanService.getService(UserExpService.class);
                     try {
-
-                        userExpDao.create(exp);
+                        userExpService.create(exp);
                     } catch (Exception ee) {
                     }
 

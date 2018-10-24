@@ -1,6 +1,7 @@
 package com.user.service.appservice.service;
 
 import com.user.service.dbservice.domain.UserExp;
+import com.user.service.dbservice.service.DefaultPLUserExpService;
 import com.user.service.dbservice.service.PLUserExpService;
 
 import java.util.List;
@@ -28,5 +29,9 @@ public class DefaultUserExpService implements UserExpService {
     @Override
     public List<UserExp> queryByUserID(String userid) {
         return service.queryByUserID(userid);
+    }
+
+    public void setService(DefaultPLUserExpService service) {
+        this.service = service;
     }
 }

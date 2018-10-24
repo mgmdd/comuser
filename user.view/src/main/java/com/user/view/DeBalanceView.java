@@ -1,11 +1,11 @@
 package com.user.view;
 
 import com.user.model.BalanceOperation;
-import com.user.service.dbservice.dao.UserDao;
-import com.user.service.dbservice.dao.UserExpDao;
+import com.user.service.BeanService;
+import com.user.service.appservice.service.UserExpService;
+import com.user.service.appservice.service.UserService;
 import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.domain.UserExp;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,11 +76,9 @@ public class DeBalanceView extends JDialog {
                             , JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                user.setBalance(oldbalance - value);
-
-                UserDao userDao = new UserDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
+                UserService userService = BeanService.getService(UserService.class);
                 try {
-                    userDao.updateBalance(user);
+                    userService.updateBalance(user.getUserID(), oldbalance - value);
 
 
                     JOptionPane.showMessageDialog(this, "消费成功，最新余额为：" + user.getBalance(), "提示"
@@ -96,10 +94,10 @@ public class DeBalanceView extends JDialog {
                     exp.setUserID(user.getUserID());
                     exp.setOperation(BalanceOperation.DE);
 
-                    UserExpDao userExpDao = new UserExpDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
+                    UserExpService userExpService = BeanService.getService(UserExpService.class);
                     try {
 
-                        userExpDao.create(exp);
+                        userExpService.create(exp);
                     } catch (Exception ee) {
                     }
 

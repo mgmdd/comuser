@@ -1,10 +1,10 @@
 package com.user.view;
 
 import com.user.model.BalanceOperation;
-import com.user.service.dbservice.dao.UserExpDao;
+import com.user.service.BeanService;
+import com.user.service.appservice.service.UserExpService;
 import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.domain.UserExp;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -71,9 +71,8 @@ public class RecordView extends JDialog {
 
         this.getContentPane().add(jScrollPane, BorderLayout.CENTER);
 
-
-        UserExpDao userExpDao = new UserExpDao(SqlSessionFactoryHolder.getSessionFactory().openSession(true));
-        List<UserExp> userExps = userExpDao.queryByUser(user);
+        UserExpService userExpService = BeanService.getService(UserExpService.class);
+        List<UserExp> userExps = userExpService.queryByUserID(user.getUserID());
 
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Vector dataVector = dataModel.getDataVector();
