@@ -229,18 +229,6 @@
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>-->
-                            <!--package-->
-                        <!--</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>-->
-                                <!--jar-no-fork-->
-                            <!--</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
             </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -266,6 +254,15 @@
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <!--jar文件中不生成META-INF/maven目录及文件-->
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <mainClass>com.user.view.MainFrame</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
 
             <plugin>
