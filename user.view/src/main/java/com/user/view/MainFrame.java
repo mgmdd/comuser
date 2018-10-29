@@ -305,11 +305,6 @@ public class MainFrame extends JFrame {
     }
 
     private void lockSystem() {
-        String lock = System.getProperty("lock");
-        if (null == lock) {
-            isLocked = false;
-            return;
-        }
         isLocked = true;
         clearTableData();
 
@@ -322,7 +317,7 @@ public class MainFrame extends JFrame {
         }
 
         //TODO refresh table data
-
+        getData();
     }
 
     private class ExitSystemAction implements ActionListener {

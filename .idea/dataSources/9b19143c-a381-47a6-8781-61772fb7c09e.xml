@@ -68,7 +68,6 @@
     <index id="20" parent="7" name="sqlite_autoindex_user_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userid</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="21" parent="7">
@@ -116,7 +115,6 @@
     <index id="29" parent="8" name="sqlite_autoindex_userexp_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>expid</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="30" parent="8">
