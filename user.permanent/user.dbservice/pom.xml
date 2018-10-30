@@ -42,4 +42,25 @@
             <artifactId>user.common</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>
+                        data/**
+                    </exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>${project.basedir}/../../user.distribution/src/main</targetPath>
+                <includes>
+                    <include>
+                        data/**
+                    </include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

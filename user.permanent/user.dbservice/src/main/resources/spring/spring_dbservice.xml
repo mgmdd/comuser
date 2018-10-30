@@ -7,5 +7,7 @@
     <bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService">
         <property name="sessionFactory" ref="sqlfactory"/>
     </bean>
-    <bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService"></bean>
+    <bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService">
+        <property name="sessionFactory" ref="sqlfactory"></property>
+    </bean>
 </beans>

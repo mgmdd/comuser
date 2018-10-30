@@ -1,26 +1,41 @@
 package com.user.service.dbservice.service;
 
-import com.user.service.BeanService;
 import com.user.service.dbservice.UserTestUtil;
 import com.user.service.dbservice.domain.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.Reader;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
 
 public class UserServiceTest {
-    private PLUserService userService;
+    private DefaultPLUserService userService;
 
-    //    private ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring_dbservice.xml");
+//    private ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring_dbservice.xml");
+
     @Before
     public void setUp() throws Exception {
-//        userService = new DefaultPLUserService();
-        userService = BeanService.getService(PLUserService.class);//(PLUserService)context.getBean("pluserservice");
+        userService = new DefaultPLUserService();
+        SqlSessionFactory sessionFactory = null;
+        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
+            Properties properties = new Properties();
+            properties.put("jdbc.url", "jdbc:sqlite::resource:data/test.db");
+            SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+            sessionFactory = sqlSessionFactoryBuilder.build(reader, properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        userService.setSessionFactory(sessionFactory);
+
         removeAll();
     }
 

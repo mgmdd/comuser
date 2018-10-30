@@ -2,7 +2,6 @@ package com.user.service.dbservice.service;
 
 import com.user.service.dbservice.domain.UserExp;
 import com.user.service.dbservice.mapper.UserExpMapper;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -16,7 +15,7 @@ public class DefaultPLUserExpService implements PLUserExpService {
     private SqlSessionFactory sessionFactory;
 
     public DefaultPLUserExpService() {
-        this.sessionFactory = SqlSessionFactoryHolder.getSessionFactory();
+//        this.sessionFactory = SqlSessionFactoryHolder.getSessionFactory();
     }
 
     /**
@@ -143,4 +142,7 @@ public class DefaultPLUserExpService implements PLUserExpService {
 //            return mapper.deleteByUser(userID);
 //        }
 //    }
+    public final void setSessionFactory(SqlSessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 }
