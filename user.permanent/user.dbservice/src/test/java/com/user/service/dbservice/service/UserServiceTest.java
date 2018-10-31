@@ -25,6 +25,9 @@ public class UserServiceTest {
     @Before
     public void setUp() throws Exception {
         userService = new DefaultPLUserService();
+        /**
+         * look issue  #2
+         */
         SqlSessionFactory sessionFactory = null;
         try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
             Properties properties = new Properties();

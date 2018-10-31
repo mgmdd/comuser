@@ -43,24 +43,58 @@
         </dependency>
     </dependencies>
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>
-                        data/**
-                    </exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <targetPath>${project.basedir}/../../user.distribution/src/main</targetPath>
-                <includes>
-                    <include>
-                        data/**
-                    </include>
-                </includes>
-            </resource>
-        </resources>
+        <!--此处使用错误，通过resource来直接执行拷贝动作
+        导致执行单元测试时找不到 data/test.db，
+        修改为通过resource plugin执行拷贝动作
+        look issue #1
+        -->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<excludes>-->
+                    <!--<exclude>-->
+                        <!--data/**-->
+                    <!--</exclude>-->
+                <!--</excludes>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<targetPath>${project.basedir}/../../user.distribution/src/main</targetPath>-->
+                <!--<includes>-->
+                    <!--<include>-->
+                        <!--data/**-->
+                    <!--</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        <!--</resources>-->
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-db</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>
+                                copy-resources
+                            </goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>
+                                            data/**
+                                        </include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${project.basedir}/../../user.distribution/src/main</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>
