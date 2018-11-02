@@ -3,11 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="sqlfactory" class="com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder"
-          factory-method="getSessionFactory"/>
-    <bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService">
+          factory-method="getSessionFactory" lazy-init="true"/>
+    <bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService" lazy-init="true">
         <property name="sessionFactory" ref="sqlfactory"/>
     </bean>
-    <bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService">
+    <bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService" lazy-init="true">
         <property name="sessionFactory" ref="sqlfactory"></property>
     </bean>
 </beans>
