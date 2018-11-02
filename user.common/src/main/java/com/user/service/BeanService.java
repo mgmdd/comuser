@@ -8,7 +8,8 @@ public class BeanService {
 
     static {
         try {
-            String[] cfgs = {"spring/spring_appservice.xml", "spring/spring_dbservice.xml"};
+            //String[] cfgs = {"spring/spring_appservice.xml", "spring/spring_dbservice.xml"};
+            String cfgs = "classpath*:spring/spring_*service.xml";
 
             ctx = new ClassPathXmlApplicationContext(cfgs);
         } catch (Exception e) {

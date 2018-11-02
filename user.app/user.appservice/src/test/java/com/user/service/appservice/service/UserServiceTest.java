@@ -1,45 +1,42 @@
 package com.user.service.appservice.service;
 
+import com.user.service.BeanService;
 import com.user.service.dbservice.domain.User;
-import com.user.service.dbservice.service.DefaultPLUserService;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.Reader;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.UUID;
 
 public class UserServiceTest {
-    private DefaultUserService userService;
+    private UserService userService;
 
     @Before
     public void setUp() {
-        userService = new DefaultUserService();
+        userService = BeanService.getService(UserService.class);
 
-        DefaultPLUserService plUserService = new DefaultPLUserService();
-        /**
-         * look issue  #2
-         */
-        SqlSessionFactory sessionFactory = null;
-        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
-            Properties properties = new Properties();
-            properties.put("jdbc.url", "jdbc:sqlite::resource:data/test.db");
-            SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-            sessionFactory = sqlSessionFactoryBuilder.build(reader, properties);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        plUserService.setSessionFactory(sessionFactory);
-
-        userService.setPlUserService(plUserService);
+//        userService = new DefaultUserService();
+//
+//        DefaultPLUserService plUserService = new DefaultPLUserService();
+//        /**
+//         * look issue  #2
+//         */
+//        SqlSessionFactory sessionFactory = null;
+//        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
+//            Properties properties = new Properties();
+//            properties.put("jdbc.url", "jdbc:sqlite::resource:data/test.db");
+//            SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+//            sessionFactory = sqlSessionFactoryBuilder.build(reader, properties);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        plUserService.setSessionFactory(sessionFactory);
+//
+//        userService.setPlUserService(plUserService);
 
         removeAll();
     }

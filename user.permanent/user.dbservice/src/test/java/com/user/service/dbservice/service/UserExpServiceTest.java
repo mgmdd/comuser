@@ -1,39 +1,38 @@
 package com.user.service.dbservice.service;
 
 import com.user.model.BalanceOperation;
+import com.user.service.BeanService;
 import com.user.service.dbservice.UserTestUtil;
 import com.user.service.dbservice.domain.UserExp;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.Reader;
 import java.util.List;
-import java.util.Properties;
 import java.util.UUID;
 
 public class UserExpServiceTest {
-    private DefaultPLUserExpService service;
+    private PLUserExpService service;
 
     @Before
     public void setUp() throws Exception {
-        service = new DefaultPLUserExpService();
+        service = BeanService.getService(PLUserExpService.class);
 
-        SqlSessionFactory sessionFactory = null;
-        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
-            Properties properties = new Properties();
-            properties.put("jdbc.url", "jdbc:sqlite::resource:data/test.db");
-            SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-            sessionFactory = sqlSessionFactoryBuilder.build(reader, properties);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        service = new DefaultPLUserExpService();
+//
+//        SqlSessionFactory sessionFactory = null;
+//        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
+//            Properties properties = new Properties();
+//            properties.put("jdbc.url", "jdbc:sqlite::resource:data/test.db");
+//            SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+//            sessionFactory = sqlSessionFactoryBuilder.build(reader, properties);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        service.setSessionFactory(sessionFactory);
 
-        service.setSessionFactory(sessionFactory);
         removeall();
     }
 
