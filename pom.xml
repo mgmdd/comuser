@@ -24,7 +24,7 @@
         <!--编译的源代码级别、目标代码级别-->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.version>4.3.5.RELEASE</spring.version>
+        <spring.version>4.3.20.RELEASE</spring.version>
     </properties>
 
     <!--统一管理项目的版本号，确保应用的各个项目的依赖和版本一致-->
