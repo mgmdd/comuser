@@ -2,7 +2,6 @@ package com.user.service.dbservice.service;
 
 import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.mapper.UserMapper;
-import com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -106,10 +105,7 @@ public class DefaultPLUserService implements PLUserService {
         if (user.getBalance() < 0.0d) {
             return true;
         }
-        if (Objects.isNull(user.getRegDate())) {
-            return true;
-        }
-        return false;
+        return Objects.isNull(user.getRegDate());
     }
 
 
