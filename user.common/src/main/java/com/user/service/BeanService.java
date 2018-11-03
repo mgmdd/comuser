@@ -9,7 +9,10 @@ public class BeanService {
     static {
         try {
             //String[] cfgs = {"spring/spring_appservice.xml", "spring/spring_dbservice.xml"};
-            String cfgs = "classpath*:spring/spring_*service.xml";
+            /**
+             * 使用通配符方式，模块将springcfg放置到固定目录下。
+             */
+            String cfgs = "classpath*:spring/*.xml";
 
             ctx = new ClassPathXmlApplicationContext(cfgs);
         } catch (Exception e) {
