@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="sqlfactory" class="com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder"
-          factory-method="getSessionFactory" lazy-init="true"/>
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!-- 由Spring接管SqlSessionFactory生成 -->
+    <!--<bean id="sqlfactory" class="com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder"-->
+          <!--factory-method="getSessionFactory" lazy-init="true"/>-->
+
     <bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService" lazy-init="true">
-        <property name="sessionFactory" ref="sqlfactory"/>
+        <property name="sessionFactory" ref="sqlSessionFactory"/>
     </bean>
     <bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService" lazy-init="true">
-        <property name="sessionFactory" ref="sqlfactory"></property>
+        <property name="sessionFactory" ref="sqlSessionFactory"></property>
     </bean>
+
+    <!-- use spring manage 2018-11-3 MagicG-->
+    <!--properties-->
+    <context:property-placeholder location="classpath*:*.properties"/>
+    <!--data source-->
+    <bean id="datasource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+        <property name="driver" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--sqlsessionfactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <!--domain class path-->
+        <property name="typeAliasesPackage" value="com.user.service.dbservice.domain"/>
+        <!--mappxml path-->
+        <property name="mapperLocations" value="classpath*:com/user/service/dbservice/orm/*.xml"/>
+    </bean>
+
+    <!--自动扫描Mapper接口类 -->
+    <mybatis:scan base-package="com.user.service.dbservice.mapper" />
+
+    <!-- function 2 -->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--&lt;!&ndash;指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 &ndash;&gt;-->
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
+        <!--&lt;!&ndash; 指定要自动扫描接口的基础包，实现接口 &ndash;&gt;-->
+        <!--<property name="basePackage" value="com.user.service.dbservice.mapper"></property>-->
+    <!--</bean>-->
+
+    <!--定义事物管理器，由spring管理事务 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+
+    <!--支持注解驱动的事务管理，指定事务管理器 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--容器自动扫描IOC组件  -->
+    <context:component-scan base-package="com.user.service"></context:component-scan>
+
+    <!--aspectj支持自动代理实现AOP功能 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
 </beans>

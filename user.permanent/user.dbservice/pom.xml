@@ -41,6 +41,10 @@
             <groupId>com.user</groupId>
             <artifactId>user.common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <!--此处使用错误，通过resource来直接执行拷贝动作
