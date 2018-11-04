@@ -3,7 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
@@ -11,11 +12,12 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
     <!-- 由Spring接管SqlSessionFactory生成 -->
     <!--<bean id="sqlfactory" class="com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder"-->
-          <!--factory-method="getSessionFactory" lazy-init="true"/>-->
+    <!--factory-method="getSessionFactory" lazy-init="true"/>-->
 
     <bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService" lazy-init="true">
         <property name="sessionFactory" ref="sqlSessionFactory"/>
@@ -44,14 +46,14 @@
     </bean>
 
     <!--自动扫描Mapper接口类 -->
-    <mybatis:scan base-package="com.user.service.dbservice.mapper" />
+    <mybatis:scan base-package="com.user.service.dbservice.mapper"/>
 
     <!-- function 2 -->
     <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--&lt;!&ndash;指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 &ndash;&gt;-->
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
-        <!--&lt;!&ndash; 指定要自动扫描接口的基础包，实现接口 &ndash;&gt;-->
-        <!--<property name="basePackage" value="com.user.service.dbservice.mapper"></property>-->
+    <!--&lt;!&ndash;指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 &ndash;&gt;-->
+    <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
+    <!--&lt;!&ndash; 指定要自动扫描接口的基础包，实现接口 &ndash;&gt;-->
+    <!--<property name="basePackage" value="com.user.service.dbservice.mapper"></property>-->
     <!--</bean>-->
 
     <!--定义事物管理器，由spring管理事务 -->
