@@ -1,4 +1,8 @@
 /.idea
 *.iml
 target/*
+target/
 *.lst
+*.class
+*.jar
+*.zip
