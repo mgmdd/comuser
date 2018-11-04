@@ -7,7 +7,7 @@
     <groupId>com.user</groupId>
     <artifactId>com.user</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <modules>
         <module>user.distribution</module>
         <module>user.common</module>
@@ -26,6 +26,41 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring.version>4.3.20.RELEASE</spring.version>
     </properties>
+
+    <inceptionYear>2018</inceptionYear>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>mgmdd</id>
+            <name>MagicG</name>
+            <email>nutao0696@163.com</email>
+            <roles>
+                <role>Owner</role>
+                <role>Founder</role>
+                <role>Committer</role>
+            </roles>
+        </developer>
+
+        <developer>
+            <id>pangdachong</id>
+            <name>MagicG2</name>
+            <email>pangdachong@gmail.com</email>
+            <roles>
+                <role>Committer</role>
+            </roles>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>GitHub Issue Management</system>
+        <url>https://github.com/mgmdd/comuser/issues</url>
+    </issueManagement>
 
     <!--统一管理项目的版本号，确保应用的各个项目的依赖和版本一致-->
     <dependencyManagement>
@@ -64,6 +99,11 @@
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
+                <artifactId>user.logservice</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.user</groupId>
                 <artifactId>user.appservice</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -75,12 +115,17 @@
             <dependency>
                 <groupId>com.user</groupId>
                 <artifactId>user.distribution</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
                 <artifactId>user.appmodel</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.user</groupId>
+                <artifactId>user.view</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
@@ -139,42 +184,34 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-instrument</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -276,9 +313,9 @@
                     <archive>
                         <!--jar文件中不生成META-INF/maven目录及文件-->
                         <addMavenDescriptor>false</addMavenDescriptor>
-                        <manifest>
-                            <mainClass>com.user.view.MainFrame</mainClass>
-                        </manifest>
+                        <!--<manifest>-->
+                        <!--<mainClass>com.user.view.MainFrame</mainClass>-->
+                        <!--</manifest>-->
                     </archive>
                 </configuration>
             </plugin>
