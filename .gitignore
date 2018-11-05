@@ -6,4 +6,5 @@ target/
 *.class
 *.jar
 *.zip
+*.log
 user.distribution/src/main/data/test.db
