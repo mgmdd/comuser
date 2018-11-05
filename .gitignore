@@ -2,6 +2,7 @@
 *.iml
 target/*
 target/
+var/
 *.lst
 *.class
 *.jar
