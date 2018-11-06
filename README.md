@@ -8,3 +8,9 @@
 4、2018-10-28 引入Spring bean
 
 5、2018-11-3 SqlSessionFactory由Spring接管
+
+6、补充log能力，引入commons-logging,log4j
+
+7、TODO 引入Spring AOP
+
+8、TODO 引入commons包

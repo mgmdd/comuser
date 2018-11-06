@@ -41,28 +41,96 @@
         look issue #1
         -->
         <!--<resources>-->
-            <!--<resource>-->
-                <!--<directory>src/main/resources</directory>-->
-                <!--<excludes>-->
-                    <!--<exclude>-->
-                        <!--data/**-->
-                    <!--</exclude>-->
-                <!--</excludes>-->
-            <!--</resource>-->
-            <!--<resource>-->
-                <!--<directory>src/main/resources</directory>-->
-                <!--<targetPath>${project.basedir}/../../user.distribution/src/main</targetPath>-->
-                <!--<includes>-->
-                    <!--<include>-->
-                        <!--data/**-->
-                    <!--</include>-->
-                <!--</includes>-->
-            <!--</resource>-->
+        <!--<resource>-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<excludes>-->
+        <!--<exclude>-->
+        <!--data/**-->
+        <!--</exclude>-->
+        <!--</excludes>-->
+        <!--</resource>-->
+        <!--<resource>-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<targetPath>${project.basedir}/../../user.distribution/src/main</targetPath>-->
+        <!--<includes>-->
+        <!--<include>-->
+        <!--data/**-->
+        <!--</include>-->
+        <!--</includes>-->
+        <!--</resource>-->
         <!--</resources>-->
         <plugins>
+            <!--<plugin>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>jar-it</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<includes>-->
+            <!--<include>-->
+            <!--**-->
+            <!--</include>-->
+            <!--</includes>-->
+            <!--<excludes>-->
+            <!--data/**-->
+            <!--</excludes>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<version>3.0.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>default-jar</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<archive>-->
+            <!--<addMavenDescriptor>false</addMavenDescriptor>-->
+            <!--</archive>-->
+            <!--<excludes>-->
+            <!--<exclude>-->
+            <!--data/**-->
+            <!--</exclude>-->
+            <!--</excludes>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<archive>-->
+            <!--<addMavenDescriptor>false</addMavenDescriptor>-->
+            <!--</archive>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
+                    <!--<execution>-->
+                    <!--<id>default-resources</id>-->
+                    <!--<phase>process-resources</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>resources</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!--<resources>-->
+                    <!--<resource>-->
+                    <!--<directory>src/main/resources</directory>-->
+                    <!--<include>**</include>-->
+                    <!--<exclude>data/**</exclude>-->
+                    <!--</resource>-->
+                    <!--</resources>-->
+                    <!--</configuration>-->
+                    <!--</execution>-->
                     <execution>
                         <id>copy-db</id>
                         <phase>compile</phase>

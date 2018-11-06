@@ -53,6 +53,9 @@
                                 <include>
                                     data/**
                                 </include>
+                                <include>
+                                    conf/**
+                                </include>
                             </includes>
                         </fileset>
                         <fileset>
