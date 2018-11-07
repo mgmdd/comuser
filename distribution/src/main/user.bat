@@ -1,0 +1,1 @@
+javaw -classpath .;./conf;./lib/* com.user.view.MainFrame

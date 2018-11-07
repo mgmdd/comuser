@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>serverparent</artifactId>
+        <groupId>com.user</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dbservice</artifactId>
+
+
+    <name>user.dbservice</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.user</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <!--此处使用错误，通过resource来直接执行拷贝动作
+        导致执行单元测试时找不到 data/test.db，
+        修改为通过resource plugin执行拷贝动作
+        look issue #1
+        -->
+        <!--<resources>-->
+        <!--<resource>-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<excludes>-->
+        <!--<exclude>-->
+        <!--data/**-->
+        <!--</exclude>-->
+        <!--</excludes>-->
+        <!--</resource>-->
+        <!--<resource>-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<targetPath>${project.basedir}/../../user.distribution/src/main</targetPath>-->
+        <!--<includes>-->
+        <!--<include>-->
+        <!--data/**-->
+        <!--</include>-->
+        <!--</includes>-->
+        <!--</resource>-->
+        <!--</resources>-->
+        <plugins>
+            <!--<plugin>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>jar-it</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<includes>-->
+            <!--<include>-->
+            <!--**-->
+            <!--</include>-->
+            <!--</includes>-->
+            <!--<excludes>-->
+            <!--data/**-->
+            <!--</excludes>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<version>3.0.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>default-jar</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<archive>-->
+            <!--<addMavenDescriptor>false</addMavenDescriptor>-->
+            <!--</archive>-->
+            <!--<excludes>-->
+            <!--<exclude>-->
+            <!--data/**-->
+            <!--</exclude>-->
+            <!--</excludes>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<archive>-->
+            <!--<addMavenDescriptor>false</addMavenDescriptor>-->
+            <!--</archive>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <!--<execution>-->
+                    <!--<id>default-resources</id>-->
+                    <!--<phase>process-resources</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>resources</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!--<resources>-->
+                    <!--<resource>-->
+                    <!--<directory>src/main/resources</directory>-->
+                    <!--<include>**</include>-->
+                    <!--<exclude>data/**</exclude>-->
+                    <!--</resource>-->
+                    <!--</resources>-->
+                    <!--</configuration>-->
+                    <!--</execution>-->
+                    <execution>
+                        <id>copy-db</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>
+                                copy-resources
+                            </goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>
+                                            data/**
+                                        </include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${project.basedir}/../../distribution/src/main</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

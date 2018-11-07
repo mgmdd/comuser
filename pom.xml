@@ -5,19 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.user</groupId>
-    <artifactId>com.user</artifactId>
+    <artifactId>userroot</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>user.distribution</module>
-        <module>user.common</module>
-        <module>user.permanent</module>
-        <module>user.logservice</module>
-        <module>user.app</module>
-        <module>user.view</module>
+        <module>distribution</module>
+        <module>common</module>
+        <module>serverparent</module>
+        <module>logservice</module>
+        <module>appparent</module>
+        <module>view</module>
     </modules>
 
-    <name>com.user</name>
+    <name>user.root</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -94,37 +94,37 @@
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.common</artifactId>
+                <artifactId>common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.logservice</artifactId>
+                <artifactId>logservice</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.appservice</artifactId>
+                <artifactId>appservice</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.dbservice</artifactId>
+                <artifactId>dbservice</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.distribution</artifactId>
+                <artifactId>distribution</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.appmodel</artifactId>
+                <artifactId>appmodel</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.user</groupId>
-                <artifactId>user.view</artifactId>
+                <artifactId>view</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
