@@ -15,6 +15,7 @@
         <module>logservice</module>
         <module>appparent</module>
         <module>view</module>
+        <module>practice</module>
     </modules>
 
     <name>user.root</name>
