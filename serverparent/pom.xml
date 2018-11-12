@@ -14,6 +14,6 @@
     <artifactId>serverparent</artifactId>
     <packaging>pom</packaging>
     <name>user.server</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
+    <url>https://mgmdd.github.io/comuser/</url>
 </project>

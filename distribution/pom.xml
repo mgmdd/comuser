@@ -12,8 +12,8 @@
     <artifactId>distribution</artifactId>
     <packaging>pom</packaging>
     <name>user.distribution</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
+    <url>https://mgmdd.github.io/comuser/</url>
     <dependencies>
         <dependency>
             <groupId>com.user</groupId>

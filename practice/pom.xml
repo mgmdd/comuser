@@ -16,6 +16,7 @@
         <module>practice-velocity</module>
         <module>practice-thymeleaf</module>
         <module>practice-ehcache</module>
+        <module>practice-spring</module>
     </modules>
 
     <dependencyManagement>

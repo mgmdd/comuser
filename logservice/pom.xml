@@ -12,8 +12,8 @@
     <artifactId>logservice</artifactId>
 
     <name>user.logservice</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
+    <url>https://mgmdd.github.io/comuser/</url>
     <build>
         <!--此处使用错误，通过resource来直接执行拷贝动作
         导致执行单元测试时找不到 data/test.db，

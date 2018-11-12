@@ -12,8 +12,8 @@
     <artifactId>view</artifactId>
 
     <name>user.view</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
+    <url>https://mgmdd.github.io/comuser/</url>
 
     <dependencies>
         <dependency>
