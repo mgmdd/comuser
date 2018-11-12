@@ -4,6 +4,8 @@ import com.user.service.dbservice.domain.UserExp;
 import com.user.service.dbservice.mapper.UserExpMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +13,9 @@ import java.util.Objects;
 /**
  *
  */
+@Repository("pluserexpservice")
 public class DefaultPLUserExpService implements PLUserExpService {
+    @Autowired
     private SqlSessionFactory sessionFactory;
 
     public DefaultPLUserExpService() {

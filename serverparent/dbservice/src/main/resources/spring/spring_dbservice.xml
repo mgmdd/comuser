@@ -14,17 +14,19 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+    <!--修改为Annotation方式-->
+    <context:component-scan base-package="com.user.service.dbservice.**"/>
 
     <!-- 由Spring接管SqlSessionFactory生成 -->
     <!--<bean id="sqlfactory" class="com.user.service.dbservice.sessionholder.SqlSessionFactoryHolder"-->
     <!--factory-method="getSessionFactory" lazy-init="true"/>-->
 
-    <bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService" lazy-init="true">
-        <property name="sessionFactory" ref="sqlSessionFactory"/>
-    </bean>
-    <bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService" lazy-init="true">
-        <property name="sessionFactory" ref="sqlSessionFactory"></property>
-    </bean>
+    <!--<bean id="pluserservice" class="com.user.service.dbservice.service.DefaultPLUserService" lazy-init="true">-->
+    <!--<property name="sessionFactory" ref="sqlSessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="pluserexpservice" class="com.user.service.dbservice.service.DefaultPLUserExpService" lazy-init="true">-->
+    <!--<property name="sessionFactory" ref="sqlSessionFactory"></property>-->
+    <!--</bean>-->
 
     <!-- use spring manage 2018-11-3 MagicG-->
     <!--properties-->

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="userservice" class="com.user.service.appservice.service.DefaultUserService" lazy-init="true">
-        <property name="plUserService" ref="pluserservice"/>
-    </bean>
-    <bean id="userexpservice" class="com.user.service.appservice.service.DefaultUserExpService" lazy-init="true">
-        <property name="service" ref="pluserexpservice" />
-    </bean>
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--修改为Annotation方式-->
+    <!--<bean id="userservice" class="com.user.service.appservice.service.DefaultUserService" lazy-init="true">-->
+    <!--<property name="plUserService" ref="pluserservice"/>-->
+    <!--</bean>-->
+    <!--<bean id="userexpservice" class="com.user.service.appservice.service.DefaultUserExpService" lazy-init="true">-->
+    <!--<property name="service" ref="pluserexpservice" />-->
+    <!--</bean>-->
+
+    <context:component-scan base-package="com.user.service.appservice.**"/>
 </beans>

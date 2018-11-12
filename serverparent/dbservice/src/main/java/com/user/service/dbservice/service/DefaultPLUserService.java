@@ -4,6 +4,8 @@ import com.user.service.dbservice.domain.User;
 import com.user.service.dbservice.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +13,9 @@ import java.util.Objects;
 /**
  * 提供用户操作的服务接口
  */
+@Repository("pluserservice")
 public class DefaultPLUserService implements PLUserService {
+    @Autowired
     private SqlSessionFactory sessionFactory;
 
     public DefaultPLUserService() {

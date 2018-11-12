@@ -3,10 +3,14 @@ package com.user.service.appservice.service;
 import com.user.service.dbservice.domain.UserExp;
 import com.user.service.dbservice.service.DefaultPLUserExpService;
 import com.user.service.dbservice.service.PLUserExpService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("userexpservice")
 public class DefaultUserExpService implements UserExpService {
+    @Autowired
     private PLUserExpService service;
 
     /**
