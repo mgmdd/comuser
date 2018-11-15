@@ -4,27 +4,33 @@ import com.user.service.BeanService;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //  https://blog.csdn.net/vbirdbest/article/details/72763048
 
+@ContextConfiguration(locations = "classpath*:spring/*.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class EhcacheTest {
-    CacheManager cacheManager;
+    @Autowired
+    @Qualifier("ehCacheCacheManager")
+    private EhCacheCacheManager ehcacheManager;
+
+    private CacheManager cacheManager;
 
     @Before
     public void setup() {
-        EhCacheCacheManager ehcacheManager = BeanService.getService("cacheManager");
-        this.cacheManager = ehcacheManager.getCacheManager();//CacheManager.getInstance();
+//        EhCacheCacheManager ehcacheManager = BeanService.getService("ehCacheCacheManager");
+        this.cacheManager = ehcacheManager.getCacheManager();
     }
 
-    @After
-    public void teardown() {
-        cacheManager.clearAll();
-    }
 
     @Test
     public void testcache() {
