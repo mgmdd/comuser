@@ -8,6 +8,7 @@
     <artifactId>userroot</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+    <url>https://mgmdd.github.io/comuser/</url>
     <modules>
         <module>distribution</module>
         <module>common</module>
