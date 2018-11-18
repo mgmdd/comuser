@@ -1,4 +1,4 @@
-package com.user.practice.velocity;
+package com.magicg.practice.velocity;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -42,7 +42,7 @@ public class VelocityTest {
          * 初始化context，保存要渲染至vm的属性对象
          */
         VelocityContext context = new VelocityContext();
-        context.put("package_name", "com.user");
+        context.put("package_name", "com.magicg");
         context.put("model", "CreateUserService");
         context.put("ctime", date);
         context.put("author", "MagicG");
